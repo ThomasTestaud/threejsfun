@@ -1,42 +1,44 @@
+import DrawKit from './DrawKit.js'
+import setupScene from './setup.js'
+import physicsWorld from './physics.js'
+import shooterSquare from './shooter.js'
 
 // Create a scene
-const scene = new THREE.Scene();
+const setup = new setupScene();
+//const physics = new physicsWorld(setup);
+const physics = new shooterSquare(setup);
 
-// Create a camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
 
-// Create a renderer
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
 
-// Create a cube
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const drawKit = new DrawKit(setup.scene);
 
-// Create a directional light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(1, 1, 1);
-scene.add(directionalLight);
+let ball = drawKit.ball();
+ball.scale.set(0.5,0.5,0.5);
+ball.rotation.y = -1;
+physics.addObject("ball", 0, 0, 4);
 
-// Create a grid helper
-const gridHelper = new THREE.GridHelper(10, 10);
-scene.add(gridHelper);
+let car = drawKit.drawCar();
+car.scale.set(0.5,0.5,0.5);
+car.rotation.y = -1;
+physics.addObject("car", 0, 0, 4);
 
-// Animation function
+
+//physics.giveImpultion("ball", 0.02, 0.2, -0.2);
+
+
+
+let poles = drawKit.rugbyPoles(0, 0, -3);
+
 const animate = () => {
-  requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-  // Rotate the cube
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-
-  // Render the scene
-  renderer.render(scene, camera);
+    physics.applyPhysics();
+    ball.position.x = physics.objects.ball.x;
+    ball.position.y = physics.objects.ball.y;
+    ball.position.z = physics.objects.ball.z;
+  
+    setup.renderer.render(setup.scene, setup.camera);
 };
-
-// Start the animation loop
 animate();
+
+
