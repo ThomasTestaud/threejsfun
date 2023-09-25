@@ -1,26 +1,33 @@
 
 class setupScene {
 
-   
-
     constructor() {
         this.setup3D();
+    }
+
+    renderLoop() {
+        const animate = () => {
+            requestAnimationFrame(animate);
+            this.applyPhysics();  
+            this.world.renderer.render(this.world.scene, this.world.camera);
+        };
+        animate();
     }
 
     setup3D() {
         const scene = new THREE.Scene();
         
         // Create a camera
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 6;
-        camera.position.y = 1;
-        camera.position.x = 0;
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera.position.z = 6;
+        this.camera.position.y = 1;
+        this.camera.position.x = 0;
         
         // Create a renderer with shadow support
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.shadowMap.enabled = true; // Enable shadows
-        document.body.appendChild(renderer.domElement);
+        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.shadowMap.enabled = true; // Enable shadows
+        document.body.appendChild(this.renderer.domElement);
         
         
         // Create a floor (green plane) that receives shadows
@@ -44,8 +51,6 @@ class setupScene {
         directionalLight.shadow.camera.far = 50;
         
         this.scene = scene;
-        this.renderer = renderer;
-        this.camera = camera;
     }
 }
 

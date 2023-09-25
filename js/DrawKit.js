@@ -50,6 +50,8 @@ class DrawKit {
         mesh.receiveShadow = true; // Enable receiving shadows
         this.scene.add(mesh);
 
+        mesh.scale.set(0.5,0.5,0.5);
+
         return mesh;
     }
 
@@ -95,6 +97,8 @@ class DrawKit {
         mesh.castShadow = true; // Enable casting shadows
         mesh.receiveShadow = true; // Enable receiving shadows
         this.scene.add(mesh);
+
+        mesh.scale.set(0.5,0.5,0.5);
 
         return mesh;
     }
