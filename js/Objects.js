@@ -1,4 +1,4 @@
-class DrawKit {
+class Objects {
     grassColor = 0x24cc0e;
     textColor = 0xffffff;
     carColor = undefined;
@@ -428,4 +428,4 @@ class DrawKit {
     }
 }
 
-export default DrawKit;
+export default Objects;

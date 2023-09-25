@@ -1,5 +1,5 @@
 
-class physicsWorld {
+class Physics {
 
     groundBounce = 0.5; // 1 = maximum bounce, 0 = no bounce
     airDrag = 0.99; // 1 = no grad, 0 = maximum drag
@@ -7,10 +7,8 @@ class physicsWorld {
     floorHeight = 0;
     floorDrag = 0.5;
 
-    constructor(world) {
-        this.world = world;
+    constructor() {
         this.objects = [];
-        //this.timeLoop();
     }
 
     addObject(name, x = 0, y = 0, z = 0) {
@@ -51,15 +49,6 @@ class physicsWorld {
             object.z += object.zV;
         });
     }
-
-    timeLoop() {
-        const animate = () => {
-            requestAnimationFrame(animate);
-            this.applyPhysics();  
-            this.world.renderer.render(this.world.scene, this.world.camera);
-        };
-        animate();
-    }
 }
 
-export default physicsWorld;
+export default Physics;

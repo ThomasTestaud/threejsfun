@@ -1,11 +1,11 @@
-import DrawKit from './DrawKit.js'
-import setupScene from './setup.js'
-import physicsWorld from './physics.js'
+import Objects from './Objects.js'
+import World from './World.js'
+import Physics from './Physics.js'
 
 // Create a scene
-const setup = new setupScene();
-const physics = new physicsWorld(setup);
-const drawKit = new DrawKit(setup.scene);
+const setup = new World();
+const physics = new Physics(setup);
+const drawKit = new Objects(setup.scene);
 
 let ball = drawKit.ball();
 
