@@ -9,7 +9,7 @@ objects.ball(1, 1, 1);
 
 objects.physics.giveImpultion("ball", -0.1, -0.2, 0);
 
-
+//objects.ball(0, 0, 0);
 
 const animate = () => {
     requestAnimationFrame(animate);
