@@ -57,11 +57,14 @@ class Objects {
 
         mesh.scale.set(0.5,0.5,0.5);
 
-        this.objects.push({'name': 'ball', 'mesh': mesh});
-        this.physics.addObject('ball', x, y, z)
+        let uniqueId = Date.now() + Math.random()*10;
+        this.objects.push({'name': uniqueId, 'mesh': mesh});
+        this.physics.addObject(uniqueId, x, y, z)
+
+        return uniqueId;
     }
 
-    drawCar() {
+    drawCar(x = 0, y = 0, z = 0) {
         let carWidth = 1.7;
         // Body
         let geometry = new THREE.BoxGeometry(carWidth, 1, 3);
@@ -103,11 +106,13 @@ class Objects {
         mesh.castShadow = true; // Enable casting shadows
         mesh.receiveShadow = true; // Enable receiving shadows
         this.scene.add(mesh);
-
         mesh.scale.set(0.5,0.5,0.5);
 
-        this.objects.push({'name': 'car', 'mesh': mesh});
-        return mesh;
+        let uniqueId = Date.now() + Math.random()*10;
+        this.objects.push({'name': uniqueId, 'mesh': mesh});
+        this.physics.addObject(uniqueId, x, y, z)
+
+        return uniqueId;
     }
 
     drawGrass() {
