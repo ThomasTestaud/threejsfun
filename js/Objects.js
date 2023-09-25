@@ -1,4 +1,4 @@
-
+import Physics from './Physics.js'
 
 class Objects {
     grassColor = 0x24cc0e;
@@ -12,6 +12,8 @@ class Objects {
         this.roadAtX = -70;
         this.commonGeometry = [];
         this.car = [];
+
+        this.physics = new Physics();
     }
 
     rugbyPoles(x = 0, y = 0, z = 0) {
@@ -56,6 +58,7 @@ class Objects {
         mesh.scale.set(0.5,0.5,0.5);
 
         this.objects.push({'name': 'ball', 'mesh': mesh});
+        this.physics.addObject('ball', x, y, z)
     }
 
     drawCar() {

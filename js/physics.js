@@ -1,7 +1,7 @@
 
 class Physics {
 
-    groundBounce = 0.5; // 1 = maximum bounce, 0 = no bounce
+    groundBounce = 0.6; // 1 = maximum bounce, 0 = no bounce
     airDrag = 0.99; // 1 = no grad, 0 = maximum drag
     gravity = 0.005;
     floorHeight = 0;
