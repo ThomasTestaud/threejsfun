@@ -9,7 +9,7 @@ class World {
         this.physics = new Physics();
         this.objects = new Objects(this.scene);
 
-        this.renderLoop();
+        //this.renderLoop();
 
     }
 
@@ -22,9 +22,9 @@ class World {
             requestAnimationFrame(animate);
             //this.applyPhysics();  
 
-            //this.scene.renderer.render(this.scene, this.scene.camera);
-            this.renderer.render(this.scene, this.camera);
+            
 
+            this.renderer.render(this.scene, this.camera);
         
         };
         animate();

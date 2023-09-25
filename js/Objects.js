@@ -1,3 +1,5 @@
+
+
 class Objects {
     grassColor = 0x24cc0e;
     textColor = 0xffffff;
@@ -53,10 +55,7 @@ class Objects {
 
         mesh.scale.set(0.5,0.5,0.5);
 
-        this.objects.push(mesh);
-
-        return mesh;
-
+        this.objects.push({'name': 'ball', 'mesh': mesh});
     }
 
     drawCar() {
@@ -104,6 +103,7 @@ class Objects {
 
         mesh.scale.set(0.5,0.5,0.5);
 
+        this.objects.push({'name': 'car', 'mesh': mesh});
         return mesh;
     }
 

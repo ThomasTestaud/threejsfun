@@ -5,21 +5,15 @@ import Physics from './Physics.js'
 // Create a scene
 const setup = new World();
 const physics = new Physics(setup);
-const drawKit = new Objects(setup.scene);
+const objects = new Objects(setup.scene);
 
-let ball = drawKit.ball();
+objects.ball();
+physics.addObject("ball", 0, 0, 4);
+physics.giveImpultion("ball", 0.02, 0.2, -0.2);
 
-//ball.rotation.y = -1;
-//physics.addObject("ball", 0, 0, 4);
-
-let car = drawKit.drawCar();
-car.rotation.y = -1;
-physics.addObject("car", 0, 0, 4);
-
-//physics.giveImpultion("ball", 0.02, 0.2, -0.2);
-
-let poles = drawKit.rugbyPoles(0, 0, -3);
-
+objects.drawCar();
+physics.addObject("car", 3, 0, 0);
+physics.giveImpultion("car", -0.1, 0.1, 0);
 
 
 
@@ -27,13 +21,17 @@ const animate = () => {
     requestAnimationFrame(animate);
 
     physics.applyPhysics();
-    ball.position.x = physics.objects.ball.x;
-    ball.position.y = physics.objects.ball.y;
-    ball.position.z = physics.objects.ball.z;
+
+    objects.objects.forEach((object) => {
+        console.log(object);
+        object['mesh'].position.x = physics.objects[object['name']].x;
+        object['mesh'].position.y = physics.objects[object['name']].y;
+        object['mesh'].position.z = physics.objects[object['name']].z;
+    })
   
     setup.renderer.render(setup.scene, setup.camera);
 };
-//animate();
+animate();
 
 
 
