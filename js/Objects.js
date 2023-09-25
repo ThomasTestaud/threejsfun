@@ -3,6 +3,7 @@ class Objects {
     textColor = 0xffffff;
     carColor = undefined;
     linesColor = undefined;
+    objects = [];
 
     constructor(scene) {
         this.scene = scene;
@@ -52,7 +53,10 @@ class Objects {
 
         mesh.scale.set(0.5,0.5,0.5);
 
+        this.objects.push(mesh);
+
         return mesh;
+
     }
 
     drawCar() {

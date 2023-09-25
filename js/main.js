@@ -9,8 +9,8 @@ const drawKit = new Objects(setup.scene);
 
 let ball = drawKit.ball();
 
-ball.rotation.y = -1;
-physics.addObject("ball", 0, 0, 4);
+//ball.rotation.y = -1;
+//physics.addObject("ball", 0, 0, 4);
 
 let car = drawKit.drawCar();
 car.rotation.y = -1;
@@ -19,6 +19,7 @@ physics.addObject("car", 0, 0, 4);
 //physics.giveImpultion("ball", 0.02, 0.2, -0.2);
 
 let poles = drawKit.rugbyPoles(0, 0, -3);
+
 
 
 
@@ -32,6 +33,7 @@ const animate = () => {
   
     setup.renderer.render(setup.scene, setup.camera);
 };
-animate();
+//animate();
+
 
 

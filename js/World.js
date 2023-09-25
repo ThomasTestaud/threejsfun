@@ -8,6 +8,9 @@ class World {
 
         this.physics = new Physics();
         this.objects = new Objects(this.scene);
+
+        this.renderLoop();
+
     }
 
     newObject(object) {
@@ -17,8 +20,12 @@ class World {
     renderLoop() {
         const animate = () => {
             requestAnimationFrame(animate);
-            this.applyPhysics();  
-            this.world.renderer.render(this.world.scene, this.world.camera);
+            //this.applyPhysics();  
+
+            //this.scene.renderer.render(this.scene, this.scene.camera);
+            this.renderer.render(this.scene, this.camera);
+
+        
         };
         animate();
     }
